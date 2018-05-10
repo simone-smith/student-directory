@@ -44,8 +44,20 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+  # print the students grouped by cohort
+  cohort_array = []
+  
+  students.each do |hash|
+    cohort_array.push(hash[:cohort]).uniq!
+  end
+  
+  cohort_array.each do |month|
+    puts month
+    students.each_with_index do |student, index|
+      if student[:cohort] == month
+        puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+      end 
+    end
   end
 end
 
