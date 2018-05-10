@@ -52,7 +52,7 @@ def input_students
     height = "6 ft" if height.empty?
 
     # add the student hash to the array
-    @students << {name: name, cohort: cohort, country: country, height: height}
+    push_students(name, cohort, country, height)
     puts "Now we have #{@students.count} student" if @students.count == 1
     puts "Now we have #{@students.count} students" if @students.count > 1
     # get another name, cohort, country and height from the user
@@ -126,7 +126,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort, country, height = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym, country: country, height: height}
+    push_students(name, cohort, country, height)
   end
   file.close
 end
@@ -141,6 +141,10 @@ def try_load_students
     puts "Sorry, #{filename} doesn't exist."
     exit # quit the program
   end
+end
+
+def push_students(name, cohort, country, height)
+  @students << {name: name, cohort: cohort.to_sym, country: country, height: height}
 end
 
 # nothing happens until we call the method
