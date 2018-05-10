@@ -39,9 +39,11 @@ def input_students
   students
 end
 
-def print_header
-  puts "The students of Villains Academy".center(50)
-  puts "-------------".center(50)
+def print_header(students)
+  if students.count > 0
+    puts "The students of Villains Academy".center(50)
+    puts "-------------".center(50)
+  end
 end
 
 def print(students)
@@ -53,21 +55,25 @@ def print(students)
   end
   
   cohort_array.each do |month|
-    puts month
+    puts month.center(50)
     students.each_with_index do |student, index|
-      if student[:cohort] == month
-        puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
-      end 
+      if students.count > 0
+        if student[:cohort] == month
+          puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+        end 
+      end
     end
   end
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(50)
+  if students.count > 0
+    puts "Overall, we have #{students.count} great students".center(50)
+  end
 end
 
 students = input_students
 #nothing happens until we call the methods
-print_header
+print_header(students)
 print(students)
 print_footer(students)
