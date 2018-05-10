@@ -34,8 +34,7 @@ end
 
 def input_students
   puts "Please enter the names of the students, followed by their cohort, country of
-  birth and height"
-  puts "To finish, just hit return twice"
+  birth and height, and hit return to finish."
   # get the first name, cohort, country and height
   puts "Name: "
   name = STDIN.gets.delete("\n").capitalize
@@ -83,22 +82,9 @@ def print_header
 end
 
 def print_students_list
-  # print the students grouped by cohort
-  cohort_array = []
-  
-  @students.each do |hash|
-    cohort_array.push(hash[:cohort]).uniq!
-  end
-  
-  cohort_array.each do |month|
-    puts month.to_s.center(50)
-    @students.each_with_index do |student, index|
-      if @students.count > 0
-        if student[:cohort] == month
-          puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
-        end 
-      end
-    end
+  @students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort. Country of birth:
+    #{student[:country]}, height: #{student[:height]}.".center(50)
   end
 end
 
