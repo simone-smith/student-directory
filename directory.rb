@@ -21,7 +21,8 @@ def input_students
 
     # add the student hash to the array
     students << {name: name, cohort: cohort, country: country, height: height}
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} student" if students.count == 1
+    puts "Now we have #{students.count} students" if students.count > 1
     # get another name, cohort, country and height from the user
     puts "Enter another name, or hit return again to finish."
     name = gets.chomp.capitalize
