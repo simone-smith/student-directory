@@ -1,28 +1,38 @@
 def input_students
-  puts "Please enter the names of the students, followed by their country of
+  puts "Please enter the names of the students, followed by their cohort, country of
   birth and height"
   puts "To finish, just hit return twice"
   # create an empty array
   students = []
-  # get the first name, country and height
+  # get the first name, cohort, country and height
   puts "Name: "
   name = gets.chomp.capitalize
+  puts "Cohort: "
+  cohort = gets.chomp.capitalize.to_sym
   puts "Country: "
   country = gets.chomp.capitalize
   puts "Height: "
   height = gets.chomp.capitalize
   # while the name is not empty, repeat this code
   while !name.empty? do
+    cohort = "May" if cohort.empty?
+    country = "UK" if country.empty?
+    height = "6 ft" if height.empty?
+
     # add the student hash to the array
-    students << {name: name, cohort: :november, country: country, height: height}
+    students << {name: name, cohort: cohort, country: country, height: height}
     puts "Now we have #{students.count} students"
-    # get another name, country and height from the user
-    puts "Name: "
+    # get another name, cohort, country and height from the user
+    puts "Enter another name, or hit return again to finish."
     name = gets.chomp.capitalize
-    puts "Country: "
-    country = gets.chomp.capitalize
-    puts "Height: "
-    height = gets.chomp.capitalize
+    if !name.empty?
+      puts "Cohort: "
+      cohort = gets.chomp.capitalize.to_sym
+      puts "Country: "
+      country = gets.chomp.capitalize
+      puts "Height: "
+      height = gets.chomp.capitalize
+    end
   end
   # return the array of students
   students
