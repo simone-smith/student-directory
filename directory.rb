@@ -6,13 +6,13 @@ def input_students
   students = []
   # get the first name, cohort, country and height
   puts "Name: "
-  name = gets.chomp.capitalize
+  name = gets.delete("\n").capitalize
   puts "Cohort: "
-  cohort = gets.chomp.capitalize.to_sym
+  cohort = gets.delete("\n").capitalize.to_sym
   puts "Country: "
-  country = gets.chomp.capitalize
+  country = gets.delete("\n").capitalize
   puts "Height: "
-  height = gets.chomp.capitalize
+  height = gets.delete("\n").capitalize
   # while the name is not empty, repeat this code
   while !name.empty? do
     cohort = "May" if cohort.empty?
@@ -25,14 +25,14 @@ def input_students
     puts "Now we have #{students.count} students" if students.count > 1
     # get another name, cohort, country and height from the user
     puts "Enter another name, or hit return again to finish."
-    name = gets.chomp.capitalize
+    name = gets.delete("\n").capitalize
     if !name.empty?
       puts "Cohort: "
-      cohort = gets.chomp.capitalize.to_sym
+      cohort = gets.delete("\n").capitalize.to_sym
       puts "Country: "
-      country = gets.chomp.capitalize
+      country = gets.delete("\n").capitalize
       puts "Height: "
-      height = gets.chomp.capitalize
+      height = gets.delete("\n").capitalize
     end
   end
   # return the array of students
